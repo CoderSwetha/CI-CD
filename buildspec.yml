@@ -11,6 +11,9 @@ phases:
   build:
     commands:
       - sam build
+- sam package\
+ --s3-bucket aws-sam-cli-managed-default-samclisourcebucket-apxrlgtqrtxm\
+ --output-template-file packaged.yaml
  
 artifacts:
   base-directory: .
