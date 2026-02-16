@@ -5,21 +5,13 @@ phases:
     runtime-versions:
       python: 3.9
     commands:
-      - pip install --upgrade pip
-      - pip install aws-sam-cli
+      pip install aws-sam-cli
  
   build:
     commands:
-       sam version
-       sam build
-       sam deploy \
-        --stack-name upload-notification \
- --s3-bucket aws-sam-cli-managed-default-samclisourcebucket-apxrlgtqrtxm \
-  --capabilities CAPABILITY_IAM \
-        --no-confirm-changeset \
-        --no-fail-on-empty-changeset
+      sam build
  
 artifacts:
-  base-directory: .
+  base-directory: .aws-sam/build
   files:
-     - packaged.yaml
+    - template.yaml
