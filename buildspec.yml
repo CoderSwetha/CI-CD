@@ -9,7 +9,8 @@ phases:
     commands:
       - sam --version
       - sam build
-      - sam package --s3-bucket aws-sam-cli-managed-default-samclisourcebucket-apxrlgtqrtxm --output-template-file packaged.yaml
+      - sam package --s3-bucket aws-sam-cli-managed-default-samclisourcebucket-apxrlgtqrtxm 
+          --output-template-file packaged.yaml
  
 artifacts:
   files:
