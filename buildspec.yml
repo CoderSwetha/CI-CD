@@ -12,9 +12,12 @@ phases:
     commands:
        sam version
        sam build
-      sam package \
+       sam deploy \
+        --stack-name upload-notification \
  --s3-bucket aws-sam-cli-managed-default-samclisourcebucket-apxrlgtqrtxm \
- --output-template-file packaged.yaml
+  --capabilities CAPABILITY_IAM \
+        --no-confirm-changeset \
+        --no-fail-on-empty-changeset
  
 artifacts:
   base-directory: .
