@@ -15,7 +15,7 @@ phases:
       - sam --version
       - sam build
       - sam package \
-          --s3-bucket aws-sam-cli-managed-default-samclisourcebucket-apxr1gtqrtxm \
+          --s3-bucket upload-notification-artifacts \
           --output-template-file packaged.yaml
  
 artifacts:
