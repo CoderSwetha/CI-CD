@@ -3,14 +3,14 @@ version: 0.2
 phases:
   install:
     commands:
-      - pip install aws-sam-cli
+      - pip install aws-sam-cli --upgrade --user
+      - export PATH=$PATH:/root/.local/bin
+      - sam --version
  
   build:
     commands:
-      - sam --version
       - sam build
-      - sam package --s3-bucket aws-sam-cli-managed-default-samclisourcebucket-apxrlgtqrtxm 
-          --output-template-file packaged.yaml
+      - sam package --s3-bucket aws-sam-cli-managed-default-samclisourcebucket-apxrlgtqrtxm --output-template-file packaged.yaml
  
 artifacts:
   files:
