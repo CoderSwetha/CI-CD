@@ -10,8 +10,9 @@ phases:
  
   build:
     commands:
-      - sam build
-- sam package\
+       sam version
+       sam build
+      sam package\
  --s3-bucket aws-sam-cli-managed-default-samclisourcebucket-apxrlgtqrtxm\
  --output-template-file packaged.yaml
  
