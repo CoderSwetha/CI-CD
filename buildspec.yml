@@ -5,22 +5,22 @@ phases:
     runtime-versions:
       python: 3.12
     commands:
+      - echo "Installing SAM CLI..."
       - pip install aws-sam-cli
-      - sam --version
 
   build:
     commands:
-      - echo "Current directory:"
-      - pwd
-      - echo "Files before build:"
-      - ls -la
-
-      - sam build
+      - echo "Starting SAM build..."
+      - sam build --config-file /dev/null
 
       - echo "After sam build:"
       - ls -la
 
-      - sam package --s3-bucket upload-notification-artifacts --output-template-file packaged.yaml
+      - echo "Running sam package..."
+      - sam package \
+          --config-file /dev/null \
+          --s3-bucket upload-notification-artifacts \
+          --output-template-file packaged.yaml
 
       - echo "After sam package:"
       - ls -la
