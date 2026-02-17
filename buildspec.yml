@@ -1,5 +1,9 @@
 version: 0.2
 
+env:
+  variables:
+    S3_BUCKET: upload-notification-artifacts
+
 phases:
   install:
     runtime-versions:
@@ -7,11 +11,22 @@ phases:
     commands:
       - pip install aws-sam-cli
 
+  pre_build:
+    commands:
+      - echo "Running tests..."
+      # optional test step
+      # - pytest
+
   build:
     commands:
+      - echo "Building SAM app..."
       - sam build
-      - sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --stack-name upload-notification --capabilities CAPABILITY_IAM --region ap-south-1
+
+      - echo "Packaging Lambda..."
+      - sam package \
+          --s3-bucket $S3_BUCKET \
+          --output-template-file packaged.yaml
 
 artifacts:
   files:
-    - '**/*'
+    - packaged.yaml
