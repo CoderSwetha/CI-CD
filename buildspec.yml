@@ -6,13 +6,24 @@ phases:
       python: 3.12
     commands:
       - pip install aws-sam-cli
+      - sam --version
 
   build:
     commands:
+      - echo "Current directory:"
+      - pwd
+      - echo "Files before build:"
+      - ls -la
+
       - sam build
-      - sam package \
-          --s3-bucket upload-notification-artifacts \
-          --output-template-file packaged.yaml
+
+      - echo "After sam build:"
+      - ls -la
+
+      - sam package --s3-bucket upload-notification-artifacts --output-template-file packaged.yaml
+
+      - echo "After sam package:"
+      - ls -la
 
 artifacts:
   files:
