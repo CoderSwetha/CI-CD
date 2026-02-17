@@ -12,8 +12,8 @@ phases:
       - sam build
       - sam package \
           --s3-bucket upload-notification-artifacts \
-          --output-template-file package.yaml
+          --output-template-file packaged.yaml
 
 artifacts:
   files:
-    - package.yaml
+    - packaged.yaml
