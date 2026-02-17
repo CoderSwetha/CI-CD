@@ -3,7 +3,7 @@
 version = 0.1
 
 [default.global.parameters]
-stack_name = "cd upload-notification"
+stack_name = "upload-notification"
 region = "ap-south-1"
 
 [default.build.parameters]
