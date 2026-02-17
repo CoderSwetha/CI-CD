@@ -11,8 +11,11 @@ phases:
   build:
     commands:
       - sam build
+      - sam package --resolve-s3 --output-template-file packaged.yaml
+      - echo "Files:"
+      - ls -la
  
 artifacts:
   base-directory: .
   files:
-    - '**/*'
+    - packaged.yaml
